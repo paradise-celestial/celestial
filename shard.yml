@@ -1,0 +1,13 @@
+name: celestial
+version: 0.1.0
+
+authors:
+  - microlith57 <microlith57@gmail.com>
+
+targets:
+  celestial:
+    main: src/celestial.cr
+
+crystal: 0.27.2
+
+license: MIT
