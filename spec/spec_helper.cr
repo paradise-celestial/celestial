@@ -1,2 +1,3 @@
 require "spec"
-require "../src/celestial"
+require "../src/server"
+require "../src/parade"
