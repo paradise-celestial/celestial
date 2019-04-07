@@ -1,33 +1,28 @@
-language:                crystal
+language:              crystal
 
 jobs:
   include:
-    - stage:             test
-      crystal:
-        - latest
-        - nightly
-      matrix:
-        allow_failiures:
-          - crystal:     nightly
-    - stage:             build
-      script:            shards build --release
+    - stage:           test
+      crystal:         latest
+
+    - stage:           build
+      script:          shards build --release
       deploy:
-        provider:        releases
+        provider:      releases
         api_key:
           secure:
-        file:            bin/celestial
-        skip_cleanup:    true
-        on:
-          tags:          true
-      if:                branch = master
-    - stage:             docs
-      script:            crystal docs
+        file:          bin/celestial
+        skip_cleanup:  true
+      if:              branch = master
+
+    - stage:           docs
+      script:          crystal docs
       deploy:
-        provider:        pages
+        provider:      pages
         github_token:
           secure:
-        skip_cleanup:    true
-        keep_history:    true
-        local_dir:       docs
-        target_branch:   gh_pages
-      if:                branch = master
+        skip_cleanup:  true
+        keep_history:  true
+        local_dir:     docs
+        target_branch: gh_pages
+      if:              branch = master
