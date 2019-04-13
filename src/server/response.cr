@@ -5,8 +5,8 @@ module Celestial
       def initialize(@yaml : String? = nil)
       end
 
-      def to_yaml
-        @yaml
+      def to_send
+        # TODO
       end
     end
   end

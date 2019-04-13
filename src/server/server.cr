@@ -34,11 +34,10 @@ module Celestial
         @log.info "Socket connected"
 
         socket.on_message do |message|
-          request = Request.from_json message
-          @log.info "Recieved query from #{connection.name}: '#{message}'"
-          response = @parade.update request
+          @log.info "Recieved query from #{connection.name}: '#{request}'"
+          response = @parade.query message
 
-          connection.send response.to_json
+          connection.send response.to_send
         end
 
         socket.on_close do

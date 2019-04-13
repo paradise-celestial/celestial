@@ -1,14 +1,23 @@
 module Celestial
   class Parade
+    # Defines the world. A world contains many `Vessel` objects, and has a
+    # `timestamp` (in UTC) when it was last touched. Any write interaction on
+    # the world should also call the `#touch` method.
     class World
+      property vessels, timestamp
+
       # Create a new world
-      def initialize
-        @vessels = [] of Vessel
+      def initialize(@vessels = [] of Vessel, @timestamp = Time.utc_now)
       end
 
       # Insert a vessel into the world
       def <<(vessel : Vessel)
         @vessels << vessel
+      end
+
+      # Set the `timestamp` to the current UTC time.
+      def touch
+        @timestamp = Time.utc_now
       end
 
       # Remove a *vessel* from the world, shifting down all indexes after it and
@@ -61,7 +70,9 @@ module Celestial
       end
 
       YAML.mapping(
-        vessels: Array(Vessel)
+        vessels: Array(Vessel),
+        timestamp: {type:    Time,
+                    default: Time.utf_now}
       )
     end
   end

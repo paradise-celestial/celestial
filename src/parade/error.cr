@@ -6,7 +6,7 @@ module Celestial
       def to_yaml
         {
           type:     :failure,
-          response: :server_error
+          response: :server_error,
         }.to_yaml
       end
 
@@ -14,12 +14,22 @@ module Celestial
         Celestial::Server::Response.new self.to_yaml
       end
 
-      class Forbidden
+      class Forbidden < Error
         def to_yaml
           {
             type:     :failure,
             response: :forbidden,
-            message:  message
+            message:  @message,
+          }.to_yaml
+        end
+      end
+
+      class SyntaxError < Error
+        def to_yaml
+          {
+            type:     :failure,
+            response: :syntax_error,
+            message:  @message,
           }.to_yaml
         end
       end

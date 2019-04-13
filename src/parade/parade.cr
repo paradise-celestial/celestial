@@ -9,17 +9,39 @@ module Celestial
     end
 
     # Query the Parade
-    def query(request : Server::Request) : Server::Response
-      Server::Response.new "TODO"
+    def query(request : Server::Request)
+      case request.type
+      when .state_full?   then state_full
+      when .last_changed? then last_changed
+      when .change?       then change(request)
+      else
+        Error::SyntaxError.new("invalid request type").to_response
+      end
+    rescue e : Parade::Error
+      return e.to_response
     end
 
-    private def apply(diff : Diff) : Server::Response
-      @world.apply! diff
-      return Server::Response.new({
+    def query(string : String)
+      query Server::Request.new(string)
+    end
 
+    private def state_full
+      Server::Response.new({
+        type:  :success,
+        state: @world,
       })
-    rescue Parade::Error => e
-      return e.to_response
+    end
+
+    private def last_changed
+      Server::Response.new({
+        type: :success,
+        time: @world.timestamp,
+      })
+    end
+
+    private def change(diff : Diff) : Server::Response
+      @world.apply! diff
+      last_changed
     end
   end
 end

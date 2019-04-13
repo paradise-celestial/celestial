@@ -1,6 +1,3 @@
-require "json"
-require "./*"
-
 module Celestial
   class Parade
     # A `Vessel` is the base unit of the Paradise world. Vessels have names,
@@ -35,7 +32,7 @@ module Celestial
         @note = diff.note unless diff.note.nil?
 
         @parent = diff.parent unless diff.parent.nil?
-        @owner  = diff.owner  unless diff.owner.nil?
+        @owner = diff.owner unless diff.owner.nil?
 
         @triggers = diff.triggers unless diff.triggers.nil?
       end
