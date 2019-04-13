@@ -95,7 +95,6 @@ produces
 ```cson
 type: "success"
 commit: "COMMIT ID"
-response: "RESPONSE"
 ```
 
 or
