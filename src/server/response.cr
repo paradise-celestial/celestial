@@ -1,11 +1,12 @@
 module Celestial
   class Server
+    # TODO: Figure out how this should work
     class Response
-      JSON.mapping(
-        message: String
-      )
+      def initialize(@yaml : String? = nil)
+      end
 
-      def initialize(@message : String)
+      def to_yaml
+        @yaml
       end
     end
   end

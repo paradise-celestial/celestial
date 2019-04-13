@@ -1,10 +1,8 @@
-require "json"
-
 module Celestial
   class Server
     class Request
       # TODO: Build protocol
-      JSON.mapping(
+      YAML.mapping(
         request_type: String,
         message: String
       )

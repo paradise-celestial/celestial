@@ -1,11 +1,8 @@
 require "http/server"
+require "logger"
 
 require "../config"
-
-require "./connection"
-
-require "./request"
-require "./response"
+require "./*"
 
 module Celestial
   # A Celestial websocket server
@@ -23,10 +20,8 @@ module Celestial
     # server = Celestial::Server.new config
     # server.start
     # ```
-    #
-    # TODO: Use `logger` utility
-    def initialize(@parade : Parade, @uri : URI = URI.parse("ws://0.0.0.0:80"), @debug_level = :verbose)
-      raise "Debug level must be :error, :warn, or :verbose" unless [:error, :warn, :verbose].includes? @debug_level
+    def initialize(@parade : Parade, @uri : URI = URI.parse("ws://0.0.0.0:80"), @log : Logger = Logger.new(STDOUT), log_level : Logger::Severity? = nil)
+      @log.level = log_level if log_level
     end
 
     # Starts the server. Blocks until the server is closed.
@@ -36,12 +31,12 @@ module Celestial
         connection = Connection.new socket
         @connections << connection
 
-        puts "Socket connection" if @debug_level == :verbose
+        @log.info "Socket connected"
 
         socket.on_message do |message|
           request = Request.from_json message
-          puts "Recieved query from #{connection.name}: '#{message}'" if @debug_level == :verbose
-          response = @parade.query request
+          @log.info "Recieved query from #{connection.name}: '#{message}'"
+          response = @parade.update request
 
           connection.send response.to_json
         end

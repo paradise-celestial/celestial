@@ -1,5 +1,3 @@
-require "./vessel"
-
 module Celestial
   class Parade
     class World
@@ -42,6 +40,29 @@ module Celestial
       def [](id : Int)
         @vessels[id]
       end
+
+      # Apply the given *diff* if doing so is allowed. Returns `true` on success
+      # and a reason on faliure.
+      def apply(diff : Diff) : Bool | String
+        diff.vessels.each do |id, vessel_diff|
+          result = self[id].apply vessel_diff
+          return result if result.is_a? String
+        end
+        true
+      end
+
+      # Apply the given *diff* if doing so is allowed. Returns `true` on success
+      # and raises an exception on failiure.
+      def apply!(diff : Diff)
+        diff.vessels.each do |id, vessel_diff|
+          self[id].apply! vessel_diff
+        end
+        true
+      end
+
+      YAML.mapping(
+        vessels: Array(Vessel)
+      )
     end
   end
 end
