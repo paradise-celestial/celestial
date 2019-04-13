@@ -3,26 +3,36 @@ language:              crystal
 jobs:
   include:
     - stage:           test
+      name:            "Specs"
       crystal:         latest
+    - name:            "Lint"
+      script:          bin/ameba
 
     - stage:           build
+      name:            "Github Releases"
       script:          shards build --release
       deploy:
         provider:      releases
         api_key:
-          secure:
+          secure:      # TODO: Create machine user?
         file:          bin/celestial
         skip_cleanup:  true
-      if:              branch = master
+        on:
+          tags:        true
 
     - stage:           docs
-      script:          crystal docs
+      name:            "Github Pages"
+      script:
+        - crystal docs
+        - mv docs $TRAVIS_TAG
       deploy:
         provider:      pages
         github_token:
-          secure:
+          secure:      # TODO: Create machine user?
         skip_cleanup:  true
         keep_history:  true
         local_dir:     docs
         target_branch: gh_pages
+        on:
+          tags:        true
       if:              branch = master
