@@ -1,0 +1,22 @@
+<script>
+  function init() {
+    uri = 'ws://localhost:3000'
+    socket = new WebSocket(uri)
+
+    socket.onopen = function(event) {
+      console.log('opened');
+    };
+
+    socket.onclose = function(event) {
+      console.log('closed');
+    };
+
+    socket.onmessage = function(event) {
+      console.log(event);
+    };
+
+    socket.onerror = function(event) {
+      console.log(event);
+    };
+  };
+</script>

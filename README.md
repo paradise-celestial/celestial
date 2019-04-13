@@ -2,6 +2,10 @@
 
 A Paradise server written in Crystal
 
+Status:
+- `master`: [![Build Status](https://travis-ci.com/paradise-celestial/celestial.svg?branch=master)](https://travis-ci.com/paradise-celestial/celestial)
+- `develop`: [![Build Status](https://travis-ci.com/paradise-celestial/celestial.svg?branch=develop)](https://travis-ci.com/paradise-celestial/celestial)
+
 ## Installation
 
 TODO: Write installation instructions here

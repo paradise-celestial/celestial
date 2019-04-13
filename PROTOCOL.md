@@ -1,10 +1,10 @@
 # Celestial Protocol
-
-The Celestial protocol is implemented by passing JSON strings back and forth using WebSockets. The snippets below are in [CSON](https://github.com/bevry/cson) for readability.
+<!-- REVIEW: Should we use JSON? -->
+The Celestial protocol is implemented by passing JSON strings back and forth using WebSockets. The snippets below are in [CSON](https://github.com/bevry/cson) for readability. Uppercase strings are placeholders.
 
 ## Client Messages
 
-### Obtain the world's state in full
+### `r` Obtain the world's state in full
 
 ```cson
 type: "state_full"
@@ -13,105 +13,50 @@ type: "state_full"
 produces
 
 ```cson
-type: "success"
-state: "STATE STRING"
+type:  "success"
+state: "STATE_STRING"
 ```
 
-### Obtain the world's state since a certain commit
+### `r` Obtain the time the world was last changed
 
 ```cson
-type: "state_since"
-when: "COMMIT ID"
-```
-
-produces
-
-```cson
-type: "success"
-diff: "DIFF STRING"
-```
-
-or
-
-```cson
-type: "failure"
-response: "FAILURE TYPE"
-```
-
-### Obtain the world's commit history
-
-```cson
-type: "commit"
+type: "last_changed"
 ```
 
 produces
 
 ```cson
 type: "success"
-commits: [
-  # Array of COMMIT IDs
-]
+time: "TIMESTAMP"
 ```
 
-or
+### `rw` Make a change
 
 ```cson
-type: "failure"
-response: "FAILURE TYPE"
-```
-
-### Obtain details of any given commit
-
-```cson
-type: "commit"
-when: "COMMIT ID"
+type: "change"
+diff: "STATE_DIFF"
 ```
 
 produces
 
 ```cson
 type: "success"
-commit: {
-  # Object representing the commit
-}
+time: "TIMESTAMP"
 ```
 
 or
 
 ```cson
-type: "failure"
-response: "FAILURE TYPE"
-```
-
-### Commit a new change
-
-```cson
-type: "commit"
-diff: "STATE DIFF"
-```
-
-produces
-
-```cson
-type: "success"
-commit: "COMMIT ID"
-response: "RESPONSE"
-```
-
-or
-
-```cson
-type: "failure"
-response: "FAILURE TYPE"
+type:     "failure"
+response: "FAILURE_TYPE"
+message:  "MESSAGE" # optional
 ```
 
 ## Server Messages
 
-### Notify the client that a commit has taken place
+### `r` Notify the client that a commit has taken place
 
 ```cson
-type: "notify"
-message: "state_change"
+type: "state_change"
+diff: "STATE_DIFF"
 ```
-
-The client must not reply.
