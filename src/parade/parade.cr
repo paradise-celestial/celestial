@@ -18,13 +18,13 @@ module Celestial
         Error::SyntaxError.new("invalid request type").to_response
       end
     rescue e : Parade::Error
-      return e.to_response
+      e.to_response
     end
 
     def query(string : String)
       query Server::Request.new(string)
     rescue e : Parade::Error
-      return e.to_response
+      e.to_response
     end
 
     private def state_full
