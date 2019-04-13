@@ -23,22 +23,24 @@ module Celestial
       end
 
       # Apply the given *diff*, returning `true` on success and a reason on
-      # faliure.
+      # failure.
       #
-      # TODO: Implement faliure conditions
+      # TODO: Implement failure conditions
       def apply(diff : VesselDiff) : Bool | String
-        @name = diff.name unless diff.name.nil?
-        @attr = diff.attr unless diff.attr.nil?
-        @note = diff.note unless diff.note.nil?
+        @name = diff.name || @name
+        @attr = diff.attr || @attr
+        @note = diff.note || @note
 
-        @parent = diff.parent unless diff.parent.nil?
-        @owner = diff.owner unless diff.owner.nil?
+        @parent = diff.parent || @parent
+        @owner  = diff.owner  || @owner
 
-        @triggers = diff.triggers unless diff.triggers.nil?
+        @triggers = diff.triggers || @triggers
+
+        true
       end
 
       # Apply the given *diff*, returning `true` on success and raising an
-      # exception on faliure.
+      # exception on failure.
       def apply!(diff : VesselDiff) : Bool
         result = apply diff
         if result.is_a? String
@@ -63,8 +65,8 @@ module Celestial
           default: -1,
         },
         triggers: {
-          type:    Hash(Symbol, String),
-          default: {} of Symbol => String,
+          type:    Hash(String, String),
+          default: {} of String => String,
         }
       )
     end

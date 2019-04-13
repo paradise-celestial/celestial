@@ -1,5 +1,3 @@
-require "yaml"
-
 module Celestial
   class Config
     # Create a new config given `YAML::Any`

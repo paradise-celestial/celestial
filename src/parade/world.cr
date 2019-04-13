@@ -51,8 +51,8 @@ module Celestial
       end
 
       # Apply the given *diff* if doing so is allowed. Returns `true` on success
-      # and a reason on faliure.
-      def apply(diff : Diff) : Bool | String
+      # and a reason on failure.
+      def apply(diff : WorldDiff) : Bool | String
         diff.vessels.each do |id, vessel_diff|
           result = self[id].apply vessel_diff
           return result if result.is_a? String
@@ -61,8 +61,8 @@ module Celestial
       end
 
       # Apply the given *diff* if doing so is allowed. Returns `true` on success
-      # and raises an exception on failiure.
-      def apply!(diff : Diff)
+      # and raises an exception on failure.
+      def apply!(diff : WorldDiff)
         diff.vessels.each do |id, vessel_diff|
           self[id].apply! vessel_diff
         end

@@ -7,6 +7,8 @@ require "./*"
 module Celestial
   # A Celestial websocket server
   class Server
+    alias Error = Parade::Error
+
     @connections = [] of Connection
 
     # Create a new server with a given *config* (see `Config`) and *URI*.
@@ -34,21 +36,22 @@ module Celestial
         @log.info "Socket connected"
 
         socket.on_message do |message|
-          @log.info "Recieved query from #{connection.name}: '#{request}'"
+          @log.info "Recieved query from #{connection.name}: '#{message}'"
           response = @parade.query message
+          @log.info "Responding with #{response.to_send}"
 
           connection.send response.to_send
         end
 
         socket.on_close do
-          puts "Socket disconnection" if @debug_level == :verbose
+          @log.info "Socket disconnection"
           @connections.delete connection
         end
       end
 
       server = HTTP::Server.new [socket_handler]
       address = server.bind_tcp (@uri.host || "0.0.0.0"), (@uri.port || 80)
-      puts "Binding to ws://#{address}"
+      @log.info "Binding to ws://#{address}"
       server.listen
     end
   end

@@ -5,21 +5,21 @@ module Celestial
     class Error < Exception
       def to_yaml
         {
-          type:     :failure,
-          response: :server_error,
+          :type     => :failure,
+          :response => :server_error,
         }.to_yaml
       end
 
       def to_response
-        Celestial::Server::Response.new self.to_yaml
+        Celestial::Server::Response.new self
       end
 
       class Forbidden < Error
         def to_yaml
           {
-            type:     :failure,
-            response: :forbidden,
-            message:  @message,
+            :type     => :failure,
+            :response => :forbidden,
+            :message  =>  @message,
           }.to_yaml
         end
       end
@@ -27,9 +27,9 @@ module Celestial
       class SyntaxError < Error
         def to_yaml
           {
-            type:     :failure,
-            response: :syntax_error,
-            message:  @message,
+            :type     => :failure,
+            :response => :syntax_error,
+            :message  => @message,
           }.to_yaml
         end
       end

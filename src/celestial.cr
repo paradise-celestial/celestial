@@ -1,3 +1,5 @@
+require "yaml"
+
 require "./server"
 require "./parade"
 

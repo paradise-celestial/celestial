@@ -15,7 +15,7 @@ module Celestial
         note: String?,
         parent: Int32?,
         owner: Int32?,
-        triggers: Hash(Symbol, String)?
+        triggers: Hash(String, String)?
       )
     end
   end
