@@ -1,4 +1,4 @@
-require "yaml"
+require "json"
 
 module Celestial
   # A `Vessel` is the base unit of the Paradise world. Vessels have names,

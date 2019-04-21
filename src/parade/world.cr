@@ -1,4 +1,4 @@
-require "yaml"
+require "json"
 
 module Celestial
   # Defines the world. A world contains many `Vessel` objects, and has a

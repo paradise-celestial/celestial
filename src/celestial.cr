@@ -2,28 +2,32 @@ require "kemal"
 require "./parade/*"
 require "./macros"
 
-world = Celestial::World.new([
-  Celestial::Vessel.new("library", 0),
-])
-sockets = [] of HTTP::WebSocket
+module Celestial
+  class_property world
 
-get "/vessels" do |env|
-  world.index(env)
-end
+  @@world = Celestial::World.new([
+    Celestial::Vessel.new("library", 0),
+  ])
+  @@sockets = [] of HTTP::WebSocket
 
-vessel_methods get, patch, delete
-
-vessel_method_no_id post
-
-ws "/socket" do |socket|
-  sockets << socket
-end
-
-world.on_change do |msg|
-  json = {type: "notify", change: msg}.to_json
-  sockets.each do |socket|
-    socket.send json
+  get "/vessels" do |env|
+    @@world.index(env)
   end
-end
 
-Kemal.run
+  vessel_methods get, patch, delete
+
+  vessel_method_no_id post
+
+  ws "/socket" do |socket|
+    @@sockets << socket
+  end
+
+  @@world.on_change do |msg|
+    json = {type: "notify", change: msg}.to_json
+    @@sockets.each do |socket|
+      socket.send json
+    end
+  end
+
+  Kemal.run
+end
