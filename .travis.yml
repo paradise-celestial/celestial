@@ -14,7 +14,7 @@ jobs:
       deploy:
         provider:      releases
         api_key:
-          secure:      # TODO: Create machine user?
+          secure:      "Mr+QjkaGCTa1tuuDFmckhDfquadSiO1xN4CvWGiTOA8Tuv6yDvGP1ueCgZcWU2aRhCP/Ke0jWdzDdJbSquIvyGsWpIiBG3BRvWuV8AFYkaqIh+w/kxDrIPCwVLR0+DqFpAc3DwN6FmNlD/C06a+xv8BkGMgJn3HpP9r4v/r1D1Q2XNrqauZ5bYsH2R3tDNRYyhNOFyaHZ+iACVXe/duZgY/aMxKUUH0iFd5Wh0oz2d9xSEle6ovlsBbD788EFyQt2/b6iD3Yq0V6XKp/LAc5QH68VW03NgLICvyl8WeqIfzt7S+dvK9b+EVdxeKUQW4+sfm6e1b7aB5/dnwJYHDaQ3QilIQZbFutJUzXMKd4L7wwmcZeJnatt/mUKT8aJ6/sWbc2QX7PVFUKyvneRgn73FP9K9mQ8XOn0X7bzNFUu90Yem2ujWR7iKt7BIL+Mo7VrJ0tUQD4JCu8uowplQ6FY5Aa8CZiw+wjRYNjRfwqLCABPQuZYmNv6bSG9JChoEZkYBuXesPAuDSwCdcFbnNfvwXieGqziBrD/lS5IT+Wo/UjdiA1oEPE99iEWRiBGID3NBT7gQKqECbly/wEZpkudNvOikQNVhZ3W+uD8ht89DuHNDem/0zid4UC3oejCkkUd/1mR0CcDq5S9M8omUOE1AdQCiAgJEfqKKmfcWCSODo="
         file:          bin/celestial
         skip_cleanup:  true
         on:
@@ -28,7 +28,7 @@ jobs:
       deploy:
         provider:      pages
         github_token:
-          secure:      # TODO: Create machine user?
+          secure:      "Mr+QjkaGCTa1tuuDFmckhDfquadSiO1xN4CvWGiTOA8Tuv6yDvGP1ueCgZcWU2aRhCP/Ke0jWdzDdJbSquIvyGsWpIiBG3BRvWuV8AFYkaqIh+w/kxDrIPCwVLR0+DqFpAc3DwN6FmNlD/C06a+xv8BkGMgJn3HpP9r4v/r1D1Q2XNrqauZ5bYsH2R3tDNRYyhNOFyaHZ+iACVXe/duZgY/aMxKUUH0iFd5Wh0oz2d9xSEle6ovlsBbD788EFyQt2/b6iD3Yq0V6XKp/LAc5QH68VW03NgLICvyl8WeqIfzt7S+dvK9b+EVdxeKUQW4+sfm6e1b7aB5/dnwJYHDaQ3QilIQZbFutJUzXMKd4L7wwmcZeJnatt/mUKT8aJ6/sWbc2QX7PVFUKyvneRgn73FP9K9mQ8XOn0X7bzNFUu90Yem2ujWR7iKt7BIL+Mo7VrJ0tUQD4JCu8uowplQ6FY5Aa8CZiw+wjRYNjRfwqLCABPQuZYmNv6bSG9JChoEZkYBuXesPAuDSwCdcFbnNfvwXieGqziBrD/lS5IT+Wo/UjdiA1oEPE99iEWRiBGID3NBT7gQKqECbly/wEZpkudNvOikQNVhZ3W+uD8ht89DuHNDem/0zid4UC3oejCkkUd/1mR0CcDq5S9M8omUOE1AdQCiAgJEfqKKmfcWCSODo="
         skip_cleanup:  true
         keep_history:  true
         local_dir:     docs
