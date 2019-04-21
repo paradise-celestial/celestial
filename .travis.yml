@@ -24,7 +24,6 @@ jobs:
       name:            "Github Pages"
       script:
         - crystal docs
-        - mv docs $TRAVIS_TAG
       deploy:
         provider:      pages
         github_token:
