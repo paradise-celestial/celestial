@@ -6,13 +6,16 @@ module Celestial
   class World
     @on_change : Proc(Hash(Symbol, Int32), Nil)?
 
+    # Create a new world.
     def initialize(@vessels = [] of Vessel, @timestamp = Time.utc_now)
     end
 
+    # Obtain the vessel with the given ID, or nil.
     def []?(id)
       @vessels[id]?
     end
 
+    # Obtain the vessel with the given ID.
     def [](id)
       @vessels[id]
     end
@@ -34,6 +37,7 @@ module Celestial
       end
     end
 
+    # Set the timestamp to the current UTC time.
     def touch
       @timestamp = Time.utc_now
     end
@@ -43,7 +47,7 @@ module Celestial
       to_json
     end
 
-    def get(id, env)
+    def http_get(id, env)
       if @vessels[id]?
         env.response.content_type = "application/json"
         @vessels[id].to_json
@@ -53,7 +57,7 @@ module Celestial
       end
     end
 
-    def post(env)
+    def http_post(env)
       @vessels << Vessel.new(
         name: param(name, String),
         parent: param(parent, Int64),
@@ -73,7 +77,7 @@ module Celestial
       }.to_json
     end
 
-    def patch(id, env)
+    def http_patch(id, env)
       if @vessels[id]?
         set_param name, String
         set_param parent, Int64
@@ -93,7 +97,7 @@ module Celestial
       }.to_json
     end
 
-    def delete(id, env)
+    def http_delete(id, env)
       if @vessels[id]?
         delete id
         change_made({:delete => id})
@@ -108,6 +112,13 @@ module Celestial
       end
     end
 
+    # Set the callback for any change to the world.
+    #
+    # Example:
+    #
+    #     world.on_change do |message|
+    #       puts message
+    #     end
     def on_change(&@on_change : Hash(Symbol, Int32) ->)
     end
 

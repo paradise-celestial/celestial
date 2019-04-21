@@ -4,9 +4,13 @@ module Celestial
   # A `Vessel` is the base unit of the Paradise world. Vessels have names,
   # optional attributes, parents, owners, and triggers.
   class Vessel
+    # Create a new vessel.
+    #
+    # NOTE: `parent` and `owner` can be any object with `#to_i32` - they will be
+    # converted to `Int32` when passed.
     def initialize(@name, parent, @attr = "", @note = "", owner = -1, @triggers = {} of String => String)
       @parent = parent.to_i32
-      @owner  = owner.to_i32
+      @owner = owner.to_i32
     end
 
     def parent=(parent : Int64)

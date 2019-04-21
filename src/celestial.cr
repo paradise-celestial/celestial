@@ -16,7 +16,7 @@ module Celestial
 
   vessel_methods get, patch, delete
 
-  vessel_method_no_id post
+  vessels_method post
 
   ws "/socket" do |socket|
     @@sockets << socket
