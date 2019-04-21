@@ -1,6 +1,7 @@
 require "kemal"
 require "./parade/*"
 require "./macros"
+require "./version"
 
 module Celestial
   class_property world
