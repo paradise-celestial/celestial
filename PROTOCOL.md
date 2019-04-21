@@ -1,62 +1,77 @@
 # Celestial Protocol
-<!-- REVIEW: Should we use JSON? -->
-The Celestial protocol is implemented by passing JSON strings back and forth using WebSockets. The snippets below are in [CSON](https://github.com/bevry/cson) for readability. Uppercase strings are placeholders.
 
-## Client Messages
+The Celestial protocol is a simple REST API. The snippets below are in [CSON](https://github.com/bevry/cson) for readability. Response strings are the equivalent types.
 
-### `r` Obtain the world's state in full
+## GET `/vessels`
 
 ```cson
-type: "state_full"
+timestamp: "Time" # Last edit in UTC
+vessels:   "Array(Vessel)" # Array of Vessels - each equivalent to output of 'GET /vessels/:id' on that vessel
 ```
 
-produces
+## GET `/vessels/:id`
 
 ```cson
-type:  "success"
-state: "STATE_STRING"
+name:     "String"
+attr:     "String"
+note:     "String"
+parent:   "Int64"
+owner:    "Int64"
+triggers: "Hash(String, String)"
 ```
 
-### `r` Obtain the time the world was last changed
+## POST `/vessels/:id`
 
 ```cson
-type: "last_changed"
+name:     "String"
+attr:     "String?"
+note:     "String?"
+parent:   "Int64"
+owner:    "Int64?"
+triggers: "Hash(String, String)?"
 ```
 
-produces
+\-->
 
 ```cson
-type: "success"
-time: "TIMESTAMP"
+type:      "success",
+id:        "Int32"
+timestamp: "Time"
 ```
 
-### `rw` Make a change
+## PATCH `/vessels/:id`
 
 ```cson
-type: "change"
-diff: "STATE_DIFF"
+name:     "String?"
+attr:     "String?"
+note:     "String?"
+parent:   "Int64?"
+owner:    "Int64?"
+triggers: "Hash(String, String)?"
 ```
 
-produces
+\-->
 
 ```cson
-type: "success"
-time: "TIMESTAMP"
+type:      "success",
+timestamp: "Time"
 ```
 
-or
+## DELETE `/vessels/:id`
 
 ```cson
-type:     "failure"
-response: "FAILURE_TYPE"
-message:  "MESSAGE" # optional
+type:      "success",
+timestamp: "Time"
 ```
 
-## Server Messages
+# WebSockets
 
-### `r` Notify the client that a commit has taken place
+A client may also open a websocket to the server. The server will periodically send notifications to listening clients, following this format:
 
 ```cson
-type: "state_change"
-diff: "STATE_DIFF"
+type: "notify"
+change:
+  "String": "Int64"
 ```
+
+The contents of the `change` hash are the operation performed on the vessel, and the ID of that vessel.
