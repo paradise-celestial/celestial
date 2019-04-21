@@ -8,6 +8,10 @@ targets:
   celestial:
     main: src/celestial.cr
 
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+
 development_dependencies:
   ameba:
     github: veelenga/ameba

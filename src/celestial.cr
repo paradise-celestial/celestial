@@ -1,17 +1,29 @@
-require "yaml"
+require "kemal"
+require "./parade/*"
+require "./macros"
 
-require "./server"
-require "./parade"
+world = Celestial::World.new([
+  Celestial::Vessel.new("library", 0),
+])
+sockets = [] of HTTP::WebSocket
 
-# TODO: Write documentation for `Celestial`
-module Celestial
-  VERSION = "0.1.0"
+get "/vessels" do |env|
+  world.index(env)
+end
 
-  def self.start
-    parade = Celestial::Parade.new
-    server = Celestial::Server.new parade, URI.parse("ws://0.0.0.0:3000")
-    server.start
+vessel_methods get, patch, delete
+
+vessel_method_no_id post
+
+ws "/socket" do |socket|
+  sockets << socket
+end
+
+world.on_change do |msg|
+  json = {type: "notify", change: msg}.to_json
+  sockets.each do |socket|
+    socket.send json
   end
 end
 
-Celestial.start
+Kemal.run
