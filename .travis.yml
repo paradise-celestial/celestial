@@ -31,6 +31,6 @@ jobs:
         skip_cleanup:  true
         keep_history:  true
         local_dir:     docs
-        target_branch: gh_pages
+        target_branch: gh-pages
         on:
           tags:        true
