@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.28.0">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/paradise-celestial/celestial">
+  <title>Celestial::World - github.com/paradise-celestial/celestial</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="github.com/paradise-celestial/celestial/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/paradise-celestial/celestial/Celestial" data-name="celestial">
+      <a href="../Celestial.html">Celestial</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/paradise-celestial/celestial/Celestial/Vessel" data-name="celestial::vessel">
+      <a href="../Celestial/Vessel.html">Vessel</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/paradise-celestial/celestial/Celestial/World" data-name="celestial::world">
+      <a href="../Celestial/World.html">World</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Celestial::World
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Celestial/World.html">Celestial::World</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Defines the world. A world contains many <code><a href="../Celestial/Vessel.html">Vessel</a></code> objects, and has a
+<code><a href="../Celestial/World.html#timestamp%3ATime-instance-method">#timestamp</a></code> (in UTC) when it was last touched.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L6" target="_blank">
+        parade/world.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28__temp_67%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(__temp_67 : JSON::PullParser)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28vessels%3D%5B%5DofVessel%2Ctimestamp%3DTime.utc_now%29-class-method" class="signature"><strong>.new</strong>(vessels = <span class="o">[]</span> <span class="k">of</span> <span class="t">Vessel</span>, timestamp = <span class="t">Time</span>.utc_now)</a>
+        
+          <div class="summary"><p>Create a new world.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28id%29-instance-method" class="signature"><strong>#[]</strong>(id)</a>
+        
+          <div class="summary"><p>Obtain the vessel with the given ID.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28id%29-instance-method" class="signature"><strong>#[]?</strong>(id)</a>
+        
+          <div class="summary"><p>Obtain the vessel with the given ID, or nil.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete%28id%29-instance-method" class="signature"><strong>#delete</strong>(id)</a>
+        
+          <div class="summary"><p>Remove a vessel from the world, shifting down all indexes after it and removing references to it.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#http_delete%28id%2Cenv%29-instance-method" class="signature"><strong>#http_delete</strong>(id, env)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#http_get%28id%2Cenv%29-instance-method" class="signature"><strong>#http_get</strong>(id, env)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#http_patch%28id%2Cenv%29-instance-method" class="signature"><strong>#http_patch</strong>(id, env)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#http_post%28env%29-instance-method" class="signature"><strong>#http_post</strong>(env)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#index%28env%29-instance-method" class="signature"><strong>#index</strong>(env)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_change%28%26on_change%3AHash%28Symbol%2CInt32%29-%3E%29-instance-method" class="signature"><strong>#on_change</strong>(&on_change : Hash(Symbol, Int32) -> )</a>
+        
+          <div class="summary"><p>Set the callback for any change to the world.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timestamp%3ATime-instance-method" class="signature"><strong>#timestamp</strong> : Time</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timestamp%3D%28_timestamp%3ATime%29-instance-method" class="signature"><strong>#timestamp=</strong>(_timestamp : Time)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#touch-instance-method" class="signature"><strong>#touch</strong></a>
+        
+          <div class="summary"><p>Set the timestamp to the current UTC time.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#vessels%3AArray%28Vessel%29-instance-method" class="signature"><strong>#vessels</strong> : Array(Vessel)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#vessels%3D%28_vessels%3AArray%28Vessel%29%29-instance-method" class="signature"><strong>#vessels=</strong>(_vessels : Array(Vessel))</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(__temp_67:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(__temp_67 : JSON::PullParser)
+
+        <a class="method-permalink" href="#new%28__temp_67%3AJSON%3A%3APullParser%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(vessels=[]ofVessel,timestamp=Time.utc_now)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(vessels = <span class="o">[]</span> <span class="k">of</span> <span class="t">Vessel</span>, timestamp = <span class="t">Time</span>.utc_now)
+
+        <a class="method-permalink" href="#new%28vessels%3D%5B%5DofVessel%2Ctimestamp%3DTime.utc_now%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create a new world.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="[](id)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(id)
+
+        <a class="method-permalink" href="#%5B%5D%28id%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Obtain the vessel with the given ID.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(id)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(id)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28id%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Obtain the vessel with the given ID, or nil.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(id)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(id)
+
+        <a class="method-permalink" href="#delete%28id%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Remove a vessel from the world, shifting down all indexes after it and
+removing references to it.</p>
+
+<p><span class="flag yellow">FIXME</span>  Make a vessel's children spill into its parent when the vessel is deleted</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="http_delete(id,env)-instance-method">
+      <div class="signature">
+        
+        def <strong>http_delete</strong>(id, env)
+
+        <a class="method-permalink" href="#http_delete%28id%2Cenv%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L100" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="http_get(id,env)-instance-method">
+      <div class="signature">
+        
+        def <strong>http_get</strong>(id, env)
+
+        <a class="method-permalink" href="#http_get%28id%2Cenv%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="http_patch(id,env)-instance-method">
+      <div class="signature">
+        
+        def <strong>http_patch</strong>(id, env)
+
+        <a class="method-permalink" href="#http_patch%28id%2Cenv%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="http_post(env)-instance-method">
+      <div class="signature">
+        
+        def <strong>http_post</strong>(env)
+
+        <a class="method-permalink" href="#http_post%28env%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="index(env)-instance-method">
+      <div class="signature">
+        
+        def <strong>index</strong>(env)
+
+        <a class="method-permalink" href="#index%28env%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_change(&amp;on_change:Hash(Symbol,Int32)-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_change</strong>(&on_change : Hash(Symbol, Int32) -> )
+
+        <a class="method-permalink" href="#on_change%28%26on_change%3AHash%28Symbol%2CInt32%29-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Set the callback for any change to the world.</p>
+
+<p>Example:</p>
+
+<pre><code>world.on_change <span class="k">do</span> <span class="o">|</span>message<span class="o">|</span>
+  puts message
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L122" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timestamp:Time-instance-method">
+      <div class="signature">
+        
+        def <strong>timestamp</strong> : Time
+
+        <a class="method-permalink" href="#timestamp%3ATime-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timestamp=(_timestamp:Time)-instance-method">
+      <div class="signature">
+        
+        def <strong>timestamp=</strong>(_timestamp : Time)
+
+        <a class="method-permalink" href="#timestamp%3D%28_timestamp%3ATime%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json(json:JSON::Builder)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_json</strong>(json : JSON::Builder)
+
+        <a class="method-permalink" href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="touch-instance-method">
+      <div class="signature">
+        
+        def <strong>touch</strong>
+
+        <a class="method-permalink" href="#touch-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Set the timestamp to the current UTC time.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/world.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="vessels:Array(Vessel)-instance-method">
+      <div class="signature">
+        
+        def <strong>vessels</strong> : Array(<a href="../Celestial/Vessel.html">Vessel</a>)
+
+        <a class="method-permalink" href="#vessels%3AArray%28Vessel%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="vessels=(_vessels:Array(Vessel))-instance-method">
+      <div class="signature">
+        
+        def <strong>vessels=</strong>(_vessels : Array(<a href="../Celestial/Vessel.html">Vessel</a>))
+
+        <a class="method-permalink" href="#vessels%3D%28_vessels%3AArray%28Vessel%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
