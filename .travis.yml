@@ -34,4 +34,3 @@ jobs:
         target_branch: gh_pages
         on:
           tags:        true
-      if:              branch = master
