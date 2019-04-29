@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.28.0">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/paradise-celestial/celestial">
+  <title>Celestial::Vessel - github.com/paradise-celestial/celestial</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="github.com/paradise-celestial/celestial/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/paradise-celestial/celestial/Celestial" data-name="celestial">
+      <a href="../Celestial.html">Celestial</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/paradise-celestial/celestial/Celestial/Vessel" data-name="celestial::vessel">
+      <a href="../Celestial/Vessel.html">Vessel</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/paradise-celestial/celestial/Celestial/World" data-name="celestial::world">
+      <a href="../Celestial/World.html">World</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Celestial::Vessel
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Celestial/Vessel.html">Celestial::Vessel</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>A <code><a href="../Celestial/Vessel.html">Vessel</a></code> is the base unit of the Paradise world. Vessels have names,
+optional attributes, parents, owners, and triggers.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/vessel.cr#L6" target="_blank">
+        parade/vessel.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28name%2Cparent%2Cattr%3D%26quot%3B%26quot%3B%2Cnote%3D%26quot%3B%26quot%3B%2Cowner%3D-1%2Ctriggers%3D%7B%7DofString%3D%3EString%29-class-method" class="signature"><strong>.new</strong>(name, parent, attr = <span class="s">&quot;&quot;</span>, note = <span class="s">&quot;&quot;</span>, owner = <span class="n">-1</span>, triggers = {} <span class="k">of</span> <span class="t">String</span> => <span class="t">String</span>)</a>
+        
+          <div class="summary"><p>Create a new vessel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28__temp_52%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(__temp_52 : JSON::PullParser)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#attr%3AString-instance-method" class="signature"><strong>#attr</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#attr%3D%28_attr%3AString%29-instance-method" class="signature"><strong>#attr=</strong>(_attr : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3AString-instance-method" class="signature"><strong>#name</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3D%28_name%3AString%29-instance-method" class="signature"><strong>#name=</strong>(_name : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#note%3AString-instance-method" class="signature"><strong>#note</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#note%3D%28_note%3AString%29-instance-method" class="signature"><strong>#note=</strong>(_note : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#owner%3AInt32-instance-method" class="signature"><strong>#owner</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#owner%3D%28owner%3AInt64%29-instance-method" class="signature"><strong>#owner=</strong>(owner : Int64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#owner%3D%28_owner%3AInt32%29-instance-method" class="signature"><strong>#owner=</strong>(_owner : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parent%3AInt32-instance-method" class="signature"><strong>#parent</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parent%3D%28parent%3AInt64%29-instance-method" class="signature"><strong>#parent=</strong>(parent : Int64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parent%3D%28_parent%3AInt32%29-instance-method" class="signature"><strong>#parent=</strong>(_parent : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#triggers%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#triggers</strong> : Hash(String, String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#triggers%3D%28_triggers%3AHash%28String%2CString%29%29-instance-method" class="signature"><strong>#triggers=</strong>(_triggers : Hash(String, String))</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(name,parent,attr=&amp;quot;&amp;quot;,note=&amp;quot;&amp;quot;,owner=-1,triggers={}ofString=&gt;String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(name, parent, attr = <span class="s">&quot;&quot;</span>, note = <span class="s">&quot;&quot;</span>, owner = <span class="n">-1</span>, triggers = {} <span class="k">of</span> <span class="t">String</span> => <span class="t">String</span>)
+
+        <a class="method-permalink" href="#new%28name%2Cparent%2Cattr%3D%26quot%3B%26quot%3B%2Cnote%3D%26quot%3B%26quot%3B%2Cowner%3D-1%2Ctriggers%3D%7B%7DofString%3D%3EString%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create a new vessel.</p>
+
+<p><span class="flag purple">NOTE</span>  <code><a href="../Celestial/Vessel.html#parent%3AInt32-instance-method">#parent</a></code> and <code><a href="../Celestial/Vessel.html#owner%3AInt32-instance-method">#owner</a></code> can be any object with <code>#to_i32</code> - they will be
+converted to <code>Int32</code> when passed.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/vessel.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(__temp_52:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(__temp_52 : JSON::PullParser)
+
+        <a class="method-permalink" href="#new%28__temp_52%3AJSON%3A%3APullParser%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="attr:String-instance-method">
+      <div class="signature">
+        
+        def <strong>attr</strong> : String
+
+        <a class="method-permalink" href="#attr%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="attr=(_attr:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>attr=</strong>(_attr : String)
+
+        <a class="method-permalink" href="#attr%3D%28_attr%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name:String-instance-method">
+      <div class="signature">
+        
+        def <strong>name</strong> : String
+
+        <a class="method-permalink" href="#name%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name=(_name:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>name=</strong>(_name : String)
+
+        <a class="method-permalink" href="#name%3D%28_name%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="note:String-instance-method">
+      <div class="signature">
+        
+        def <strong>note</strong> : String
+
+        <a class="method-permalink" href="#note%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="note=(_note:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>note=</strong>(_note : String)
+
+        <a class="method-permalink" href="#note%3D%28_note%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="owner:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>owner</strong> : Int32
+
+        <a class="method-permalink" href="#owner%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="owner=(owner:Int64)-instance-method">
+      <div class="signature">
+        
+        def <strong>owner=</strong>(owner : Int64)
+
+        <a class="method-permalink" href="#owner%3D%28owner%3AInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/vessel.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="owner=(_owner:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>owner=</strong>(_owner : Int32)
+
+        <a class="method-permalink" href="#owner%3D%28_owner%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parent:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>parent</strong> : Int32
+
+        <a class="method-permalink" href="#parent%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parent=(parent:Int64)-instance-method">
+      <div class="signature">
+        
+        def <strong>parent=</strong>(parent : Int64)
+
+        <a class="method-permalink" href="#parent%3D%28parent%3AInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/paradise-celestial/celestial/blob/abfbe0e8d5bf01dcbc4032fc1675269dfdd720ca/src/parade/vessel.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parent=(_parent:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>parent=</strong>(_parent : Int32)
+
+        <a class="method-permalink" href="#parent%3D%28_parent%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json(json:JSON::Builder)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_json</strong>(json : JSON::Builder)
+
+        <a class="method-permalink" href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="triggers:Hash(String,String)-instance-method">
+      <div class="signature">
+        
+        def <strong>triggers</strong> : Hash(String, String)
+
+        <a class="method-permalink" href="#triggers%3AHash%28String%2CString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="triggers=(_triggers:Hash(String,String))-instance-method">
+      <div class="signature">
+        
+        def <strong>triggers=</strong>(_triggers : Hash(String, String))
+
+        <a class="method-permalink" href="#triggers%3D%28_triggers%3AHash%28String%2CString%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
